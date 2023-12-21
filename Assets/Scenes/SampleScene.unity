@@ -1645,6 +1645,7 @@ GameObject:
   - component: {fileID: 1905955877}
   - component: {fileID: 1905955876}
   - component: {fileID: 1905955875}
+  - component: {fileID: 1905955878}
   m_Layer: 0
   m_Name: Door (1)
   m_TagString: Untagged
@@ -1738,6 +1739,27 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1905955873}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!95 &1905955878
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1905955873}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a61872846ecb7a94e92846db684127e8, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1929482993
 GameObject:
   m_ObjectHideFlags: 0
@@ -2067,6 +2089,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   promptMessage: Use Keypad
+  door: {fileID: 1905955873}
 --- !u!1 &2028593892
 GameObject:
   m_ObjectHideFlags: 0
@@ -2091,7 +2114,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2028593892}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -1.4962165, y: 0.79271376, z: 1.1948242}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2295,6 +2318,6 @@ SceneRoots:
   m_Roots:
   - {fileID: 705507995}
   - {fileID: 8615222837654369684}
-  - {fileID: 2028593893}
   - {fileID: 724293880}
   - {fileID: 707309378}
+  - {fileID: 2028593893}
