@@ -8,15 +8,19 @@ public class Rifle : MonoBehaviour
 
     public float impactForce = 30f;
 
+    public float fireRate = 15f;
+
     public Camera fpsCam;
     public ParticleSystem muzzleFlash;
     public GameObject impactEffect;
 
+    private float nextTimeToFire = 0f;
 
     void Update()
     {
-        if (Input.GetButtonDown("Fire1"))
+        if (Input.GetButton("Fire1") && Time.time >= nextTimeToFire)
         {
+            nextTimeToFire = Time.time + 1f / fireRate;
             Shoot();
         }
     }
