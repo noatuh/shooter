@@ -2,18 +2,29 @@ using UnityEngine;
 
 public class Rifle : MonoBehaviour
 {
+
+    public float damage = 10f;
+    public float range = 100f;
+
+    public Camera fpsCam;
+
     void Update()
     {
-        // Check if the Fire1 action is triggered
         if (Input.GetButtonDown("Fire1"))
         {
-            FireWeapon();
+            Shoot();
         }
     }
 
-    void FireWeapon()
+    void Shoot()
     {
-        // Implement your firing logic here
-        Debug.Log("Weapon Fired!");
+        RaycastHit hit;
+        if (Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hit, range))
+        {
+            Debug.Log(hit.transform.name);
+        }
     }
+
+
+
 }
