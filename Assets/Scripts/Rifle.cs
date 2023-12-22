@@ -6,9 +6,12 @@ public class Rifle : MonoBehaviour
     public float damage = 10f;
     public float range = 100f;
 
+    public float impactForce = 30f;
+
     public Camera fpsCam;
     public ParticleSystem muzzleFlash;
     public GameObject impactEffect;
+
 
     void Update()
     {
@@ -32,6 +35,11 @@ public class Rifle : MonoBehaviour
             if (target != null)
             {
                 target.TakeDamage(damage);
+            }
+
+            if (hit.rigidbody != null)
+            {
+                hit.rigidbody.AddForce(-hit.normal * impactForce);
             }
 
             GameObject impactGo = Instantiate(impactEffect, hit.point, Quaternion.LookRotation(hit.normal));
