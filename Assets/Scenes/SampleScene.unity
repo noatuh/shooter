@@ -670,9 +670,12 @@ MonoBehaviour:
   range: 100
   impactForce: 200
   fireRate: 15
+  maxAmmo: 30
+  reloadTime: 2
   fpsCam: {fileID: 784795733}
   muzzleFlash: {fileID: 1852908381}
   impactEffect: {fileID: 8553602040943757092, guid: 11a934e81e7376b49a7f8f7956772253, type: 3}
+  animator: {fileID: 870428369}
 --- !u!1 &572869646
 GameObject:
   m_ObjectHideFlags: 0
@@ -1502,6 +1505,7 @@ GameObject:
   m_Component:
   - component: {fileID: 870428367}
   - component: {fileID: 870428368}
+  - component: {fileID: 870428369}
   m_Layer: 0
   m_Name: Weapon Holder
   m_TagString: Untagged
@@ -1539,6 +1543,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selectedWeapon: 0
+--- !u!95 &870428369
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 870428366}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: f430d58296be0924888a926836ae95d7, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1001 &932121253
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1741,9 +1766,13 @@ MonoBehaviour:
   damage: 5
   range: 50
   impactForce: 15
+  fireRate: 15
+  maxAmmo: 30
+  reloadTime: 2
   fpsCam: {fileID: 784795733}
   muzzleFlash: {fileID: 1209808753}
   impactEffect: {fileID: 8553602040943757092, guid: 11a934e81e7376b49a7f8f7956772253, type: 3}
+  animator: {fileID: 870428369}
 --- !u!1 &994404521
 GameObject:
   m_ObjectHideFlags: 0
