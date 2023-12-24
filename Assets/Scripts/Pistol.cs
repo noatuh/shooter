@@ -3,35 +3,29 @@ using System.Collections;
 
 public class Pistol : MonoBehaviour
 {
+    public float damage = 5f;
+    public float range = 50f;
+    public float impactForce = 15f;
 
-    public float damage = 10f;
-    public float range = 100f;
-
-    public float impactForce = 30f;
-
-    public float fireRate = 15f;
-
-    public int maxAmmo = 30;
+    // public float fireRate = 15f;
+    public int maxAmmo = 15;
     private int currentAmmo;
     public float reloadTime = 2f;
-
     private bool isReloading = false;
 
     public Camera fpsCam;
     public ParticleSystem muzzleFlash;
     public GameObject impactEffect;
 
-    private float nextTimeToFire = 0f;
-
-    public Animator animator;    
-
+    // private float nextTimeToFire = 0f;
+    public Animator animator;
 
     void Start()
     {
         currentAmmo = maxAmmo;
     }
 
-        void OnEnable()
+    void OnEnable()
     {
         isReloading = false;
         animator.SetBool("Reloading", false);
@@ -39,20 +33,17 @@ public class Pistol : MonoBehaviour
 
     void Update()
     {
-
         if (isReloading)
             return;
 
         if (currentAmmo <= 0)
-
         {
             StartCoroutine(Reload());
             return;
         }
 
-        if (Input.GetButton("Fire1") && Time.time >= nextTimeToFire)
+        if (Input.GetButtonDown("Fire1"))
         {
-            nextTimeToFire = Time.time + 1f / fireRate;
             Shoot();
         }
     }
@@ -64,7 +55,7 @@ public class Pistol : MonoBehaviour
 
         animator.SetBool("Reloading", true);
 
-        yield return new WaitForSeconds(reloadTime -0.25f);
+        yield return new WaitForSeconds(reloadTime - 0.25f);
 
         animator.SetBool("Reloading", false);
 
@@ -76,10 +67,7 @@ public class Pistol : MonoBehaviour
 
     void Shoot()
     {
-
         muzzleFlash.Play();
-
-
         currentAmmo--;
 
         RaycastHit hit;
@@ -102,7 +90,4 @@ public class Pistol : MonoBehaviour
             Destroy(impactGo, 2f);
         }
     }
-
-
-
 }

@@ -1887,7 +1887,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5738456080911321149, guid: a35b8c32acba1334b9b31dfe8cdbc9be, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.4209999
+      value: 0.421
       objectReference: {fileID: 0}
     - target: {fileID: 5738456080911321149, guid: a35b8c32acba1334b9b31dfe8cdbc9be, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1895,7 +1895,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5738456080911321149, guid: a35b8c32acba1334b9b31dfe8cdbc9be, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.34400028
+      value: 0.378
       objectReference: {fileID: 0}
     - target: {fileID: 5738456080911321149, guid: a35b8c32acba1334b9b31dfe8cdbc9be, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1961,8 +1961,7 @@ MonoBehaviour:
   damage: 5
   range: 50
   impactForce: 15
-  fireRate: 15
-  maxAmmo: 30
+  maxAmmo: 15
   reloadTime: 2
   fpsCam: {fileID: 784795733}
   muzzleFlash: {fileID: 1209808753}
@@ -2099,13 +2098,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1209808750}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: -1}
-  m_LocalPosition: {x: -0.403, y: 0.0775, z: -0.2333}
+  m_LocalRotation: {x: 0.10034403, y: 0.6722274, z: -0.14853565, w: -0.7183166}
+  m_LocalPosition: {x: -0.492, y: 0.161, z: -0.226}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1536298729}
-  m_LocalEulerAnglesHint: {x: 0, y: 270, z: 0}
+  m_LocalEulerAnglesHint: {x: 3.184, y: 274.37, z: 20.416}
 --- !u!199 &1209808752
 ParticleSystemRenderer:
   serializedVersion: 6
@@ -7654,13 +7653,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1852908378}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: -0.7071068}
+  m_LocalRotation: {x: 0.092678025, y: 0.675869, z: -0.14400692, w: -0.7168501}
   m_LocalPosition: {x: -0.66030043, y: 0.085099995, z: 0.00019997358}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1562174736}
-  m_LocalEulerAnglesHint: {x: 0, y: 270, z: 0}
+  m_LocalEulerAnglesHint: {x: 3.542, y: 273.977, z: 19.413}
 --- !u!199 &1852908380
 ParticleSystemRenderer:
   serializedVersion: 6
