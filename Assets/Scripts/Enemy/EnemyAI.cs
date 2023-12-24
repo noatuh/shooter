@@ -47,6 +47,14 @@ public class EnemyAI : MonoBehaviour
     {
         transform.position = Vector3.MoveTowards(transform.position, randomDestination, moveSpeed * Time.deltaTime);
 
+        // Calculate the new direction to look at
+        Vector3 direction = (randomDestination - transform.position).normalized;
+        if (direction != Vector3.zero)
+        {
+            Quaternion lookRotation = Quaternion.LookRotation(direction);
+            transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 5.0f); // Adjust the rotation speed if necessary
+        }
+
         if (Vector3.Distance(transform.position, randomDestination) < 0.5f || changeDestinationTimer > changeDestinationTime)
         {
             SetRandomDestination();
