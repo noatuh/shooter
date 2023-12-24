@@ -5,11 +5,14 @@ public class EnemyAI : MonoBehaviour
     public float moveSpeed = 2.0f;
     public float chaseDistance = 5.0f;
     public float attackDistance = 1.5f;
+    public float attackDamage = 10.0f; // Public so you can modify it later in the Inspector
+    public float attackCooldown = 5.0f; // Time in seconds between attacks
 
     private Transform playerTransform;
     private Vector3 randomDestination;
     private float changeDestinationTime = 5.0f;
     private float changeDestinationTimer;
+    private float attackTimer;
 
     void Start()
     {
@@ -23,16 +26,22 @@ public class EnemyAI : MonoBehaviour
 
         if (distanceToPlayer <= attackDistance)
         {
-            // Stop moving when in attack range
+            if (attackTimer <= 0)
+            {
+                AttackPlayer();
+                attackTimer = attackCooldown; // Reset the attack timer
+            }
+            else
+            {
+                attackTimer -= Time.deltaTime; // Decrease timer
+            }
         }
         else if (distanceToPlayer <= chaseDistance)
         {
-            // Chase the player
             ChasePlayer();
         }
         else
         {
-            // Move randomly
             MoveRandomly();
         }
     }
@@ -69,5 +78,15 @@ public class EnemyAI : MonoBehaviour
         float randomX = Random.Range(-10.0f, 10.0f);
         float randomZ = Random.Range(-10.0f, 10.0f);
         randomDestination = new Vector3(randomX, transform.position.y, randomZ);
+    }
+
+    void AttackPlayer()
+    {
+        // Assuming the player has a script named PlayerHealth attached to it
+        PlayerHealth playerHealth = playerTransform.GetComponent<PlayerHealth>();
+        if (playerHealth != null)
+        {
+            playerHealth.TakeDamage(attackDamage);
+        }
     }
 }

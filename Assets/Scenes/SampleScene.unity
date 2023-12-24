@@ -494,6 +494,7 @@ MonoBehaviour:
   moveSpeed: 2
   chaseDistance: 5
   attackDistance: 1.5
+  attackDamage: 10
 --- !u!1 &385068302
 GameObject:
   m_ObjectHideFlags: 0
@@ -1416,6 +1417,7 @@ MonoBehaviour:
   moveSpeed: 2
   chaseDistance: 5
   attackDistance: 1.5
+  attackDamage: 10
 --- !u!20 &784795733 stripped
 Camera:
   m_CorrespondingSourceObject: {fileID: 7487540102678151650, guid: 7a9ed301d56ee3043a8a707ce1d1a1c4, type: 3}
@@ -1732,6 +1734,7 @@ MonoBehaviour:
   moveSpeed: 2
   chaseDistance: 5
   attackDistance: 1.5
+  attackDamage: 10
 --- !u!1001 &946171293
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7128,6 +7131,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   promptText: {fileID: 200051971}
+--- !u!114 &1549408716
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1549408702}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a7364ec822c3be41bf328065ad41f4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 100
 --- !u!1 &1550110382
 GameObject:
   m_ObjectHideFlags: 0
@@ -12435,6 +12451,7 @@ MonoBehaviour:
   moveSpeed: 2
   chaseDistance: 5
   attackDistance: 1.5
+  attackDamage: 10
 --- !u!1 &1860098827
 GameObject:
   m_ObjectHideFlags: 0
@@ -13232,6 +13249,7 @@ MonoBehaviour:
   moveSpeed: 2
   chaseDistance: 5
   attackDistance: 1.5
+  attackDamage: 10
 --- !u!1001 &2049834873
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13364,6 +13382,7 @@ MonoBehaviour:
   moveSpeed: 2
   chaseDistance: 5
   attackDistance: 1.5
+  attackDamage: 10
 --- !u!1 &2109323063
 GameObject:
   m_ObjectHideFlags: 0
@@ -13664,6 +13683,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8403956397778461136, guid: 7a9ed301d56ee3043a8a707ce1d1a1c4, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1549408715}
+    - targetCorrespondingSourceObject: {fileID: 8403956397778461136, guid: 7a9ed301d56ee3043a8a707ce1d1a1c4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1549408716}
     - targetCorrespondingSourceObject: {fileID: 3086110903902916469, guid: 7a9ed301d56ee3043a8a707ce1d1a1c4, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1741255290}
