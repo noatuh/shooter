@@ -1,20 +1,16 @@
-using UnityEngine;
 using System.Collections;
+using UnityEngine;
 
 public class Rifle : MonoBehaviour
 {
-
     public float damage = 10f;
     public float range = 100f;
-
-    public float impactForce = 30f;
-
     public float fireRate = 15f;
-
+    public float impactForce = 30f;
     public int maxAmmo = 30;
     private int currentAmmo;
-    public float reloadTime = 2f;
-
+    public int totalAmmo = 90; // Variable for total ammo
+    public float reloadTime = 1f;
     private bool isReloading = false;
 
     public Camera fpsCam;
@@ -22,13 +18,11 @@ public class Rifle : MonoBehaviour
     public GameObject impactEffect;
 
     private float nextTimeToFire = 0f;
-
-    public Animator animator;    
-
+    public Animator animator;
 
     void Start()
     {
-        currentAmmo = maxAmmo;
+        currentAmmo = maxAmmo; // Initialize currentAmmo
     }
 
     void OnEnable()
@@ -37,49 +31,55 @@ public class Rifle : MonoBehaviour
         animator.SetBool("Reloading", false);
     }
 
-    void Update()
+void Update()
+{
+    if (isReloading)
+        return;
+
+    if (currentAmmo <= 0 && totalAmmo > 0 || (Input.GetKeyDown(KeyCode.R) && currentAmmo < maxAmmo && totalAmmo > 0))
     {
-
-        if (isReloading)
-            return;
-
-        if (currentAmmo <= 0)
-
-        {
-            StartCoroutine(Reload());
-            return;
-        }
-
-        if (Input.GetButton("Fire1") && Time.time >= nextTimeToFire)
-        {
-            nextTimeToFire = Time.time + 1f / fireRate;
-            Shoot();
-        }
+        StartCoroutine(Reload());
+        return;
     }
+
+    if (Input.GetButton("Fire1") && Time.time >= nextTimeToFire)
+    {
+        nextTimeToFire = Time.time + 1f / fireRate;
+        Shoot();
+    }
+}
+
 
     IEnumerator Reload()
     {
         isReloading = true;
-        Debug.Log("Reloading...");
-
         animator.SetBool("Reloading", true);
 
-        yield return new WaitForSeconds(reloadTime -0.25f);
-
+        yield return new WaitForSeconds(reloadTime - .25f);
         animator.SetBool("Reloading", false);
+        yield return new WaitForSeconds(.25f);
 
-        yield return new WaitForSeconds(0.25f);
+        int ammoNeeded = maxAmmo - currentAmmo;
+        if (totalAmmo >= ammoNeeded)
+        {
+            currentAmmo += ammoNeeded;
+            totalAmmo -= ammoNeeded;
+        }
+        else
+        {
+            currentAmmo += totalAmmo;
+            totalAmmo = 0;
+        }
 
-        currentAmmo = maxAmmo;
         isReloading = false;
     }
 
     void Shoot()
     {
+        if (currentAmmo <= 0)
+            return;
 
         muzzleFlash.Play();
-
-
         currentAmmo--;
 
         RaycastHit hit;
@@ -98,11 +98,13 @@ public class Rifle : MonoBehaviour
                 hit.rigidbody.AddForce(-hit.normal * impactForce);
             }
 
-            GameObject impactGo = Instantiate(impactEffect, hit.point, Quaternion.LookRotation(hit.normal));
-            Destroy(impactGo, 2f);
+            GameObject impactGO = Instantiate(impactEffect, hit.point, Quaternion.LookRotation(hit.normal));
+            Destroy(impactGO, 2f);
         }
     }
 
-
-
+    public void AddAmmo(int ammoAmount) // Method to add ammo
+    {
+        totalAmmo += ammoAmount;
+    }
 }
