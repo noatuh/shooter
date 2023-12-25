@@ -13,7 +13,7 @@ public class CursorLock : MonoBehaviour
 
     void Update()
     {
-        // Press ESC to unlock and show the cursor
+        // Press F2 to unlock and show the cursor
         if (Input.GetKeyDown(KeyCode.F2))
         {
             Cursor.lockState = CursorLockMode.None;
@@ -25,6 +25,18 @@ public class CursorLock : MonoBehaviour
         {
             Cursor.visible = false;
             Cursor.lockState = CursorLockMode.Locked;
+        }
+
+        // Press ESC to quit the game
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            #if UNITY_EDITOR
+                // If running in the Unity Editor
+                UnityEditor.EditorApplication.isPlaying = false;
+            #else
+                // If running in a build version
+                Application.Quit();
+            #endif
         }
     }
 }
