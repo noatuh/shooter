@@ -47,6 +47,19 @@ void Update()
         nextTimeToFire = Time.time + 1f / fireRate;
         Shoot();
     }
+
+    if (Input.GetKeyDown(KeyCode.E))
+    {
+        RaycastHit hit;
+        if (Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hit, range))
+        {
+            AmmoItem ammoItem = hit.transform.GetComponent<AmmoItem>();
+            if (ammoItem != null)
+            {
+                ammoItem.ReplenishAmmo(gameObject);
+            }
+        }
+    }
 }
 
 
