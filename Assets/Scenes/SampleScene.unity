@@ -868,6 +868,9 @@ MonoBehaviour:
   attackDistance: 1.5
   attackDamage: 10
   attackCooldown: 5
+  patrolAreaMin: {x: -10, y: 0, z: -10}
+  patrolAreaMax: {x: 10, y: 0, z: 10}
+  initialChaseDelay: 10
 --- !u!54 &591540341
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1495,6 +1498,9 @@ MonoBehaviour:
   attackDistance: 1.5
   attackDamage: 10
   attackCooldown: 5
+  patrolAreaMin: {x: -10, y: 0, z: -10}
+  patrolAreaMax: {x: 10, y: 0, z: 10}
+  initialChaseDelay: 10
 --- !u!54 &915493302
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -6871,6 +6877,9 @@ MonoBehaviour:
   attackDistance: 1.5
   attackDamage: 10
   attackCooldown: 5
+  patrolAreaMin: {x: -10, y: 0, z: -10}
+  patrolAreaMax: {x: 10, y: 0, z: 10}
+  initialChaseDelay: 10
 --- !u!54 &1437605552
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -7038,6 +7047,9 @@ MonoBehaviour:
   attackDistance: 1.5
   attackDamage: 10
   attackCooldown: 5
+  patrolAreaMin: {x: -10, y: 0, z: -10}
+  patrolAreaMax: {x: 10, y: 0, z: 10}
+  initialChaseDelay: 10
 --- !u!54 &1471854253
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -7210,6 +7222,9 @@ MonoBehaviour:
   attackDistance: 1.5
   attackDamage: 10
   attackCooldown: 5
+  patrolAreaMin: {x: -10, y: 0, z: -10}
+  patrolAreaMax: {x: 10, y: 0, z: 10}
+  initialChaseDelay: 10
 --- !u!54 &1542966148
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -7707,6 +7722,9 @@ MonoBehaviour:
   attackDistance: 1.5
   attackDamage: 10
   attackCooldown: 5
+  patrolAreaMin: {x: -10, y: 0, z: -10}
+  patrolAreaMax: {x: 10, y: 0, z: 10}
+  initialChaseDelay: 10
 --- !u!54 &1742146061
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -13470,6 +13488,9 @@ MonoBehaviour:
   attackDistance: 1.5
   attackDamage: 10
   attackCooldown: 5
+  patrolAreaMin: {x: -10, y: 0, z: -10}
+  patrolAreaMax: {x: 10, y: 0, z: 10}
+  initialChaseDelay: 10
 --- !u!54 &2032156070
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -13584,7 +13605,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6461367642652010775, guid: 7a9ed301d56ee3043a8a707ce1d1a1c4, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4.579
+      value: 7.7
       objectReference: {fileID: 0}
     - target: {fileID: 6461367642652010775, guid: 7a9ed301d56ee3043a8a707ce1d1a1c4, type: 3}
       propertyPath: m_LocalPosition.y
@@ -13592,7 +13613,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6461367642652010775, guid: 7a9ed301d56ee3043a8a707ce1d1a1c4, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -5.247
+      value: 103.9
       objectReference: {fileID: 0}
     - target: {fileID: 6461367642652010775, guid: 7a9ed301d56ee3043a8a707ce1d1a1c4, type: 3}
       propertyPath: m_LocalRotation.w
