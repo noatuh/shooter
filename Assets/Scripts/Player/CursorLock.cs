@@ -14,7 +14,7 @@ public class CursorLock : MonoBehaviour
     void Update()
     {
         // Press ESC to unlock and show the cursor
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.F2))
         {
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
