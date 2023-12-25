@@ -1,26 +1,61 @@
 using UnityEngine;
+using TMPro; // Use TextMeshPro namespace
 
 public class HealthCube : MonoBehaviour
 {
+    public float healAmount;
+    public TextMeshProUGUI healthPromptText; // Change to TextMeshProUGUI for the prompt
+
     private GameObject player;
+    private bool playerInRange;
 
     void Start()
     {
-        player = GameObject.FindWithTag("Player"); // Ensure your player has the tag "Player"
+        player = GameObject.FindWithTag("Player");
+        healthPromptText.enabled = false; // Ensure the prompt is not visible initially
     }
 
     void Update()
     {
-        if (player != null && Vector3.Distance(transform.position, player.transform.position) < 3.0f) // 3.0f is the interaction distance
+        if (player != null)
         {
-            if (Input.GetKeyDown(KeyCode.E))
+            float distance = Vector3.Distance(transform.position, player.transform.position);
+            playerInRange = distance < 3.0f;
+
+            // Enable or disable the health prompt based on player's proximity and line of sight
+            if (playerInRange && IsPlayerLookingAtCube())
             {
-                PlayerHealth playerHealth = player.GetComponent<PlayerHealth>();
-                if (playerHealth != null)
-                {
-                    playerHealth.ReplenishHealth(10); // Replenish 10 health
-                }
+                healthPromptText.enabled = true;
+            }
+            else
+            {
+                healthPromptText.enabled = false;
+            }
+
+            if (playerInRange && Input.GetKeyDown(KeyCode.E))
+            {
+                HealPlayer();
             }
         }
+    }
+
+    private bool IsPlayerLookingAtCube()
+    {
+        RaycastHit hit;
+        Transform cameraTransform = Camera.main.transform; // Get the main camera transform
+
+        // Perform a raycast from the camera forward
+        if (Physics.Raycast(cameraTransform.position, cameraTransform.forward, out hit))
+        {
+            // Check if the hit object is the health cube
+            return hit.collider.gameObject == this.gameObject;
+        }
+        return false;
+    }
+
+    private void HealPlayer()
+    {
+        // Implement your heal logic here
+        Debug.Log("Player has been healed by " + healAmount);
     }
 }
