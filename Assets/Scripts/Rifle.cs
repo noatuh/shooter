@@ -136,7 +136,7 @@ public class Rifle : MonoBehaviour
 
     void UpdateAmmoUI()
     {
-        ammoDisplay.text = "Ammo: " + currentAmmo + " / " + totalAmmo;
+        ammoDisplay.text = currentAmmo + " / " + totalAmmo;
     }
 
     public void SetAmmoDisplayVisibility(bool isVisible)
