@@ -832,7 +832,7 @@ Transform:
   m_GameObject: {fileID: 591540337}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.61725587, z: -0, w: 0.7867625}
-  m_LocalPosition: {x: -12.3, y: 0, z: 45.1}
+  m_LocalPosition: {x: -11.7, y: 0, z: 65.2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -868,8 +868,7 @@ MonoBehaviour:
   attackDistance: 1.5
   attackDamage: 10
   attackCooldown: 5
-  patrolAreaMin: {x: -10, y: 0, z: -10}
-  patrolAreaMax: {x: 10, y: 0, z: 10}
+  patrolDistance: 10
   initialChaseDelay: 10
 --- !u!54 &591540341
 Rigidbody:
@@ -999,7 +998,7 @@ Transform:
   m_GameObject: {fileID: 677348695}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 9.13, y: -1.079, z: -2.804}
+  m_LocalPosition: {x: 9.13, y: -1.424, z: -2.804}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1462,7 +1461,7 @@ Transform:
   m_GameObject: {fileID: 915493298}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.61725587, z: -0, w: 0.7867625}
-  m_LocalPosition: {x: -1.4, y: 0, z: 63.67}
+  m_LocalPosition: {x: -0.7999997, y: 0, z: 83.77}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1498,8 +1497,7 @@ MonoBehaviour:
   attackDistance: 1.5
   attackDamage: 10
   attackCooldown: 5
-  patrolAreaMin: {x: -10, y: 0, z: -10}
-  patrolAreaMax: {x: 10, y: 0, z: 10}
+  patrolDistance: 10
   initialChaseDelay: 10
 --- !u!54 &915493302
 Rigidbody:
@@ -6841,7 +6839,7 @@ Transform:
   m_GameObject: {fileID: 1437605548}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.61725587, z: -0, w: 0.7867625}
-  m_LocalPosition: {x: -2.16, y: 0, z: 40.36}
+  m_LocalPosition: {x: -1.5599995, y: 0, z: 60.46}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6877,8 +6875,7 @@ MonoBehaviour:
   attackDistance: 1.5
   attackDamage: 10
   attackCooldown: 5
-  patrolAreaMin: {x: -10, y: 0, z: -10}
-  patrolAreaMax: {x: 10, y: 0, z: 10}
+  patrolDistance: 10
   initialChaseDelay: 10
 --- !u!54 &1437605552
 Rigidbody:
@@ -7011,7 +7008,7 @@ Transform:
   m_GameObject: {fileID: 1471854249}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.61725587, z: -0, w: 0.7867625}
-  m_LocalPosition: {x: 16, y: 0, z: 39.02}
+  m_LocalPosition: {x: 16.6, y: 0, z: 59.12}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -7047,8 +7044,7 @@ MonoBehaviour:
   attackDistance: 1.5
   attackDamage: 10
   attackCooldown: 5
-  patrolAreaMin: {x: -10, y: 0, z: -10}
-  patrolAreaMax: {x: 10, y: 0, z: 10}
+  patrolDistance: 10
   initialChaseDelay: 10
 --- !u!54 &1471854253
 Rigidbody:
@@ -7186,7 +7182,7 @@ Transform:
   m_GameObject: {fileID: 1542966144}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.61725587, z: -0, w: 0.7867625}
-  m_LocalPosition: {x: 8.63, y: 0, z: 28.97}
+  m_LocalPosition: {x: 9.2300005, y: 0, z: 49.07}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -7222,8 +7218,7 @@ MonoBehaviour:
   attackDistance: 1.5
   attackDamage: 10
   attackCooldown: 5
-  patrolAreaMin: {x: -10, y: 0, z: -10}
-  patrolAreaMax: {x: 10, y: 0, z: 10}
+  patrolDistance: 10
   initialChaseDelay: 10
 --- !u!54 &1542966148
 Rigidbody:
@@ -7686,7 +7681,7 @@ Transform:
   m_GameObject: {fileID: 1742146057}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.61725587, z: -0, w: 0.7867625}
-  m_LocalPosition: {x: 6.16, y: 0, z: 52.13}
+  m_LocalPosition: {x: 6.76, y: 0, z: 72.23}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -7722,8 +7717,7 @@ MonoBehaviour:
   attackDistance: 1.5
   attackDamage: 10
   attackCooldown: 5
-  patrolAreaMin: {x: -10, y: 0, z: -10}
-  patrolAreaMax: {x: 10, y: 0, z: 10}
+  patrolDistance: 10
   initialChaseDelay: 10
 --- !u!54 &1742146061
 Rigidbody:
@@ -7853,7 +7847,7 @@ Transform:
   m_GameObject: {fileID: 1818446858}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 9.48, y: -1.37, z: 3.0151763}
+  m_LocalPosition: {x: 8.88, y: -1.37, z: 0.11}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -13452,7 +13446,7 @@ Transform:
   m_GameObject: {fileID: 2032156066}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.61725587, z: -0, w: 0.7867625}
-  m_LocalPosition: {x: -7.25, y: 0, z: 29.2}
+  m_LocalPosition: {x: -6.6499996, y: 0, z: 49.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -13488,8 +13482,7 @@ MonoBehaviour:
   attackDistance: 1.5
   attackDamage: 10
   attackCooldown: 5
-  patrolAreaMin: {x: -10, y: 0, z: -10}
-  patrolAreaMax: {x: 10, y: 0, z: 10}
+  patrolDistance: 10
   initialChaseDelay: 10
 --- !u!54 &2032156070
 Rigidbody:
@@ -13605,7 +13598,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6461367642652010775, guid: 7a9ed301d56ee3043a8a707ce1d1a1c4, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 7.7
+      value: 0.44
       objectReference: {fileID: 0}
     - target: {fileID: 6461367642652010775, guid: 7a9ed301d56ee3043a8a707ce1d1a1c4, type: 3}
       propertyPath: m_LocalPosition.y
@@ -13613,7 +13606,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6461367642652010775, guid: 7a9ed301d56ee3043a8a707ce1d1a1c4, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 103.9
+      value: 2.92
       objectReference: {fileID: 0}
     - target: {fileID: 6461367642652010775, guid: 7a9ed301d56ee3043a8a707ce1d1a1c4, type: 3}
       propertyPath: m_LocalRotation.w
