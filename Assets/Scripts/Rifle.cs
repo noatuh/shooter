@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using TMPro; // TextMeshPro namespace
 
 public class Rifle : MonoBehaviour
 {
@@ -9,7 +10,7 @@ public class Rifle : MonoBehaviour
     public float impactForce = 30f;
     public int maxAmmo = 30;
     private int currentAmmo;
-    public int totalAmmo = 90; // Variable for total ammo
+    public int totalAmmo = 90;
     public float reloadTime = 1f;
     private bool isReloading = false;
 
@@ -17,51 +18,59 @@ public class Rifle : MonoBehaviour
     public ParticleSystem muzzleFlash;
     public GameObject impactEffect;
 
-    private float nextTimeToFire = 0f;
+    public TextMeshProUGUI ammoDisplay; // Reference to the TextMeshProUGUI component
     public Animator animator;
+
+    private float nextTimeToFire = 0f;
 
     void Start()
     {
-        currentAmmo = maxAmmo; // Initialize currentAmmo
+        currentAmmo = maxAmmo;
+        UpdateAmmoUI();
     }
 
     void OnEnable()
     {
         isReloading = false;
         animator.SetBool("Reloading", false);
+        SetAmmoDisplayVisibility(true); // Show ammo counter when rifle is enabled
     }
 
-void Update()
-{
-    if (isReloading)
-        return;
-
-    if (currentAmmo <= 0 && totalAmmo > 0 || (Input.GetKeyDown(KeyCode.R) && currentAmmo < maxAmmo && totalAmmo > 0))
+    void OnDisable()
     {
-        StartCoroutine(Reload());
-        return;
+        SetAmmoDisplayVisibility(false); // Hide ammo counter when rifle is disabled
     }
 
-    if (Input.GetButton("Fire1") && Time.time >= nextTimeToFire)
+    void Update()
     {
-        nextTimeToFire = Time.time + 1f / fireRate;
-        Shoot();
-    }
+        if (isReloading)
+            return;
 
-    if (Input.GetKeyDown(KeyCode.E))
-    {
-        RaycastHit hit;
-        if (Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hit, range))
+        if (currentAmmo <= 0 && totalAmmo > 0 || (Input.GetKeyDown(KeyCode.R) && currentAmmo < maxAmmo && totalAmmo > 0))
         {
-            AmmoItem ammoItem = hit.transform.GetComponent<AmmoItem>();
-            if (ammoItem != null)
+            StartCoroutine(Reload());
+            return;
+        }
+
+        if (Input.GetButton("Fire1") && Time.time >= nextTimeToFire)
+        {
+            nextTimeToFire = Time.time + 1f / fireRate;
+            Shoot();
+        }
+
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            RaycastHit hit;
+            if (Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hit, range))
             {
-                ammoItem.ReplenishAmmo(gameObject);
+                AmmoItem ammoItem = hit.transform.GetComponent<AmmoItem>();
+                if (ammoItem != null)
+                {
+                    ammoItem.ReplenishAmmo(gameObject);
+                }
             }
         }
     }
-}
-
 
     IEnumerator Reload()
     {
@@ -85,6 +94,7 @@ void Update()
         }
 
         isReloading = false;
+        UpdateAmmoUI();
     }
 
     void Shoot()
@@ -114,10 +124,23 @@ void Update()
             GameObject impactGO = Instantiate(impactEffect, hit.point, Quaternion.LookRotation(hit.normal));
             Destroy(impactGO, 2f);
         }
+
+        UpdateAmmoUI();
     }
 
-    public void AddAmmo(int ammoAmount) // Method to add ammo
+    public void AddAmmo(int ammoAmount)
     {
         totalAmmo += ammoAmount;
+        UpdateAmmoUI();
+    }
+
+    void UpdateAmmoUI()
+    {
+        ammoDisplay.text = "Ammo: " + currentAmmo + " / " + totalAmmo;
+    }
+
+    public void SetAmmoDisplayVisibility(bool isVisible)
+    {
+        ammoDisplay.gameObject.SetActive(isVisible);
     }
 }
