@@ -1,18 +1,17 @@
 using UnityEngine;
-using TMPro; // Namespace for TextMeshPro
-using UnityEngine.SceneManagement; // Namespace for Scene Management
+using TMPro; // Make sure to include TextMeshPro if you're using TMP_Text
 
 public class PlayerHealth : MonoBehaviour
 {
     public float health = 100.0f;
-    public TMP_Text healthText;
+    public TMP_Text healthText; // Make sure this is linked in the Unity inspector
 
-    void Start()
+    private void Start()
     {
-        UpdateHealthText(); // Initial update to display health at the start
+        UpdateHealthText();
     }
 
-    void Update()
+    private void Update()
     {
         if (health <= 0)
         {
@@ -20,39 +19,33 @@ public class PlayerHealth : MonoBehaviour
         }
     }
 
-    void UpdateHealthText()
+    private void UpdateHealthText()
     {
-        if (healthText != null)
-        {
-            healthText.text = string.Format("Health: {0:D3}%", Mathf.Clamp((int)health, 0, 100));
-        }
+        healthText.text = "Health: " + Mathf.Clamp(health, 0, 100) + "%";
     }
 
-    void Die()
+    public void Die()
     {
-        // Add any death animation or sound effects here if needed
-
-        // Reload the current scene
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        // Add your death logic here (animations, game over screen, etc.)
+        Debug.Log("Player has died.");
+        // Reload the scene or reset the game
     }
 
-    // Example function to take damage
     public void TakeDamage(float amount)
     {
         health -= amount;
         UpdateHealthText();
-
         if (health <= 0)
         {
             Die();
         }
     }
 
-    // Function to replenish health
     public void ReplenishHealth(float amount)
     {
         health += amount;
-        health = Mathf.Clamp(health, 0, 100); // Ensure health doesn't exceed 100
+        health = Mathf.Clamp(health, 0, 100); // Ensure health does not exceed 100
         UpdateHealthText();
+        Debug.Log("Health replenished by " + amount + ". Current health: " + health);
     }
 }

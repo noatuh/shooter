@@ -1463,7 +1463,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8caadb0db061dbb4685067292b75d5e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healAmount: 0
+  healAmount: 10
   healthPromptText: {fileID: 1599224780}
 --- !u!1 &705507993
 GameObject:

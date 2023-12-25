@@ -8,16 +8,26 @@ public class HealthCube : MonoBehaviour
 
     private GameObject player;
     private bool playerInRange;
+    private PlayerHealth playerHealth; // Reference to the PlayerHealth script
 
     void Start()
     {
         player = GameObject.FindWithTag("Player");
-        healthPromptText.enabled = false; // Ensure the prompt is not visible initially
+        if (player != null)
+        {
+            // Get the PlayerHealth component from the player object
+            playerHealth = player.GetComponent<PlayerHealth>();
+        }
+
+        if (healthPromptText != null)
+        {
+            healthPromptText.enabled = false; // Ensure the prompt is not visible initially
+        }
     }
 
     void Update()
     {
-        if (player != null)
+        if (player != null && healthPromptText != null && playerHealth != null)
         {
             float distance = Vector3.Distance(transform.position, player.transform.position);
             playerInRange = distance < 3.0f;
@@ -55,7 +65,9 @@ public class HealthCube : MonoBehaviour
 
     private void HealPlayer()
     {
-        // Implement your heal logic here
+        // Call ReplenishHealth on the player's PlayerHealth script
+        playerHealth.ReplenishHealth(healAmount);
+
         Debug.Log("Player has been healed by " + healAmount);
     }
 }
