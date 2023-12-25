@@ -51,11 +51,14 @@ public class AmmoItem : MonoBehaviour
     public void ReplenishAmmo(GameObject player)
     {
         Rifle rifle = player.GetComponent<Rifle>();
-        if (rifle != null)
+        if (rifle != null && rifle.totalAmmo < 200) // Check if the player has less than 200 ammo
         {
             rifle.AddAmmo(ammoAmount);
         }
-        // Optionally, destroy the ammo item after use
-        // Destroy(gameObject);
+        // Optionally, destroy the ammo item after use if the ammo was added
+        // if (rifle.totalAmmo < 200)
+        // {
+        //     Destroy(gameObject);
+        // }
     }
 }
