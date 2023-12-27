@@ -2,7 +2,10 @@ using UnityEngine;
 using TMPro; // Use the TextMeshPro namespace
 
 public class AmmoItem : MonoBehaviour
+
 {
+
+    public bool destroyAfterUse = true; // Destroy the ammo item after use
     public int ammoAmount = 90; // Amount of ammo to replenish
     public TextMeshProUGUI ammoPromptText; // Add a TextMeshProUGUI variable for the ammo prompt
 
@@ -54,11 +57,13 @@ public class AmmoItem : MonoBehaviour
         if (rifle != null && rifle.totalAmmo < 200) // Check if the player has less than 200 ammo
         {
             rifle.AddAmmo(ammoAmount);
+
+            // Destroy the ammo item after use if destroyAfterUse is true
+            if (destroyAfterUse)
+            {
+                Destroy(gameObject);
+            }
         }
-        // Optionally, destroy the ammo item after use if the ammo was added
-        // if (rifle.totalAmmo < 200)
-        // {
-        //     Destroy(gameObject);
-        // }
     }
+
 }
