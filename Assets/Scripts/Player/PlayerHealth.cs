@@ -24,11 +24,18 @@ public class PlayerHealth : MonoBehaviour
         healthText.text = "Health: " + Mathf.Clamp(health, 0, 100) + "%";
     }
 
+
     public void Die()
     {
         // Add your death logic here (animations, game over screen, etc.)
         Debug.Log("Player has died.");
-        // Reload the scene or reset the game
+
+        // If in the Unity editor, stop playing. Otherwise, quit the application.
+        #if UNITY_EDITOR
+            UnityEditor.EditorApplication.isPlaying = false;
+        #else
+            Application.Quit();
+        #endif
     }
 
     public void TakeDamage(float amount)
