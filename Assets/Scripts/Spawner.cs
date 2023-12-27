@@ -8,7 +8,7 @@ public class Spawner : MonoBehaviour
     public Transform[] spawnPoints; // Array of spawn points
     private List<GameObject> enemies = new List<GameObject>(); // List to keep track of spawned enemies
     private int maxEnemies = 4; // Maximum number of enemies
-    private float spawnDelay = 300f; // Delay before spawning a new enemy
+    public float spawnDelay = 300f; // Delay before spawning a new enemy
 
     void Start()
     {
