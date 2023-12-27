@@ -3,6 +3,7 @@ using TMPro; // Use TextMeshPro namespace
 
 public class HealthCube : MonoBehaviour
 {
+    public bool destroyAfterUse;
     public float healAmount;
     public TextMeshProUGUI healthPromptText; // Change to TextMeshProUGUI for the prompt
 
@@ -65,9 +66,18 @@ public class HealthCube : MonoBehaviour
 
     private void HealPlayer()
     {
-        // Call ReplenishHealth on the player's PlayerHealth script
-        playerHealth.ReplenishHealth(healAmount);
+        // Only heal the player if their health is not already at maximum
+        if (playerHealth.health < playerHealth.maxHealth)
+        {
+            // Call ReplenishHealth on the player's PlayerHealth script
+            playerHealth.ReplenishHealth(healAmount);
 
-        Debug.Log("Player has been healed by " + healAmount);
+            Debug.Log("Player has been healed by " + healAmount);
+
+            if (destroyAfterUse)
+            {
+                Destroy(gameObject);
+            }
+        }
     }
 }

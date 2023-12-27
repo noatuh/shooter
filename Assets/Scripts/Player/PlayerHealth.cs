@@ -6,6 +6,10 @@ public class PlayerHealth : MonoBehaviour
     public float health = 100.0f;
     public TMP_Text healthText; // Make sure this is linked in the Unity inspector
 
+    public float currentHealth;
+
+    public float maxHealth = 100f;
+
     private void Start()
     {
         UpdateHealthText();
