@@ -39,10 +39,18 @@ public class Pistol : MonoBehaviour
         HideAmmoText(); // Hide ammo text when the pistol is disabled
     }
 
+
     void Update()
     {
         if (isReloading)
             return;
+
+        // If the "R" key is pressed and the current ammo is less than max ammo, start reloading
+        if (Input.GetKeyDown(KeyCode.R) && currentAmmo < maxAmmo)
+        {
+            StartCoroutine(Reload());
+            return;
+        }
 
         if (currentAmmo <= 0)
         {
@@ -56,19 +64,21 @@ public class Pistol : MonoBehaviour
         }
     }
 
+
 IEnumerator Reload()
 {
     isReloading = true;
     Debug.Log("Reloading...");
+
     animator.SetBool("Reloading", true);
 
-    yield return new WaitForSeconds(reloadTime - 0.25f);
-    animator.SetBool("Reloading", false);
-    yield return new WaitForSeconds(0.25f);
+    yield return new WaitForSeconds(reloadTime);
 
     currentAmmo = maxAmmo;
     isReloading = false;
-    UpdateAmmoText(); // Call UpdateAmmoText here to update the ammo display immediately after reloading
+
+    animator.SetBool("Reloading", false);
+    UpdateAmmoText(); // Update ammo display after reloading
 }
 
 
