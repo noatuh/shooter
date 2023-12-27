@@ -58,6 +58,9 @@ public class AmmoItem : MonoBehaviour
         {
             rifle.AddAmmo(ammoAmount);
 
+            // Disable the ammo prompt before destroying the ammo item
+            ammoPromptText.enabled = false;
+
             // Destroy the ammo item after use if destroyAfterUse is true
             if (destroyAfterUse)
             {
