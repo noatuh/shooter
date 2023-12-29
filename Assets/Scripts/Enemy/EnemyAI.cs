@@ -18,6 +18,8 @@ public class EnemyAI : MonoBehaviour
     private float attackTimer;
     private float chaseTimer;
 
+    private bool isInitialized = false;
+
     void Start()
     {
         playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
@@ -26,37 +28,59 @@ public class EnemyAI : MonoBehaviour
         chaseTimer = initialChaseDelay; // Initialize chase timer
     }
 
-    void Update()
+void Update()
+{
+    // If the AI is not initialized and the player has spawned, initialize the AI
+    if (!isInitialized && GameObject.FindGameObjectWithTag("Player") != null)
     {
-        float distanceToPlayer = Vector3.Distance(transform.position, playerTransform.position);
+        Initialize();
+    }
 
-        if (chaseTimer > 0)
+    // Only execute AI logic if the AI is initialized
+    if (isInitialized)
+    {
+        if (playerTransform != null)
         {
-            chaseTimer -= Time.deltaTime;
-        }
-        else
-        {
-            if (distanceToPlayer <= attackDistance)
+            float distanceToPlayer = Vector3.Distance(transform.position, playerTransform.position);
+
+            if (chaseTimer > 0)
             {
-                if (attackTimer <= 0)
-                {
-                    AttackPlayer();
-                    attackTimer = attackCooldown;
-                }
-                else
-                {
-                    attackTimer -= Time.deltaTime;
-                }
-            }
-            else if (distanceToPlayer <= chaseDistance)
-            {
-                ChasePlayer();
+                chaseTimer -= Time.deltaTime;
             }
             else
             {
-                MoveRandomly();
+                if (distanceToPlayer <= attackDistance)
+                {
+                    if (attackTimer <= 0)
+                    {
+                        AttackPlayer();
+                        attackTimer = attackCooldown;
+                    }
+                    else
+                    {
+                        attackTimer -= Time.deltaTime;
+                    }
+                }
+                else if (distanceToPlayer <= chaseDistance)
+                {
+                    ChasePlayer();
+                }
+                else
+                {
+                    MoveRandomly();
+                }
             }
         }
+    }
+}
+
+    void Initialize()
+    {
+        playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
+        startPosition = transform.position; // Store the starting position
+        SetRandomDestination();
+        chaseTimer = initialChaseDelay; // Initialize chase timer
+        isInitialized = true;
     }
 
     void ChasePlayer()
@@ -68,23 +92,36 @@ public class EnemyAI : MonoBehaviour
 
     void MoveRandomly()
     {
-        transform.position = Vector3.MoveTowards(transform.position, randomDestination, moveSpeed * Time.deltaTime);
-
-        if (Vector3.Distance(transform.position, randomDestination) < 0.5f || changeDestinationTimer > changeDestinationTime)
+        if (Vector3.Distance(transform.position, startPosition) > patrolDistance)
         {
-            SetRandomDestination();
-            changeDestinationTimer = 0;
+            // If the enemy is too far from its start position, move back to the start position
+            transform.position = Vector3.MoveTowards(transform.position, startPosition, moveSpeed * Time.deltaTime);
         }
+        else
+        {
+            // If the enemy is within its patrol distance, move to a random destination
+            transform.position = Vector3.MoveTowards(transform.position, randomDestination, moveSpeed * Time.deltaTime);
 
-        changeDestinationTimer += Time.deltaTime;
+            if (Vector3.Distance(transform.position, randomDestination) < 0.5f || changeDestinationTimer > changeDestinationTime)
+            {
+                SetRandomDestination();
+                changeDestinationTimer = 0;
+            }
+
+            changeDestinationTimer += Time.deltaTime;
+        }
     }
 
     void SetRandomDestination()
     {
-        // Generate a random destination within a "patrolDistance" radius from the starting position
-        float randomX = Random.Range(startPosition.x - patrolDistance, startPosition.x + patrolDistance);
-        float randomZ = Random.Range(startPosition.z - patrolDistance, startPosition.z + patrolDistance);
-        randomDestination = new Vector3(randomX, startPosition.y, randomZ);
+        // Generate a random angle
+        float randomAngle = Random.Range(0, 360);
+
+        // Calculate a random direction
+        Vector3 randomDirection = new Vector3(Mathf.Cos(randomAngle), 0, Mathf.Sin(randomAngle));
+
+        // Multiply the random direction by the patrol distance to get a random destination within the patrol distance
+        randomDestination = startPosition + randomDirection * patrolDistance;
     }
 
     void AttackPlayer()
