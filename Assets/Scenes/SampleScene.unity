@@ -4317,6 +4317,10 @@ PrefabInstance:
       propertyPath: PistolAmmoText
       value: 
       objectReference: {fileID: 322145959}
+    - target: {fileID: 2114753662046203565, guid: 7a9ed301d56ee3043a8a707ce1d1a1c4, type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3229319676891364504, guid: 7a9ed301d56ee3043a8a707ce1d1a1c4, type: 3}
       propertyPath: promptText
       value: 
